@@ -27,6 +27,10 @@ import java.util.Set;
 public class CustomPrincipalBuilder implements KafkaPrincipalBuilder, KafkaPrincipalSerde {
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomPrincipalBuilder.class);
     private static final Set<String> INTERNAL_LISTENERS = Set.of("CONTROLPLANE-9090", "REPLICATION-9091");
+
+    // Customize the mapping rule to match you you want to do. This example matches the regular Strimzi users and givens
+    // them the user principal <Username>@my-cluster. But you can customize it to for example remove some parts of the
+    // distinguished name etc.
     private static final String CUSTOM_SSL_PRINCIPAL_MAPPING_RULES = "RULE:^CN=(.*?)$/$1@my-cluster/L";
 
     private final DefaultKafkaPrincipalBuilder internalPrincipalBuilder;
