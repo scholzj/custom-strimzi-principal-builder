@@ -22,19 +22,19 @@ It provides a custom principal builder that:
 4. Build a new custom container image with the JAR and push it into your container repository.
    For example:
    ```
-   docker build -t quay.io/scholzj/kafka:0.38.0-kafka-3.6.0 .
-   docker push quay.io/scholzj/kafka:0.38.0-kafka-3.6.0
+   docker build --platform linux/amd64 -t quay.io/scholzj/kafka:0.51.0-kafka-4.2.0 .
+   docker push quay.io/scholzj/kafka:0.51.0-kafka-4.2.0
    ```
 5. Use the image in your Kafka cluster and configure the custom principal builder class:
    ```yaml
-   apiVersion: kafka.strimzi.io/v1beta2
+   apiVersion: kafka.strimzi.io/v1
    kind: Kafka
    metadata:
      name: my-cluster
    spec:
      # ...
      kafka:
-       image: quay.io/scholzj/kafka:0.38.0-kafka-3.6.0
+       image: quay.io/scholzj/kafka:0.51.0-kafka-4.2.0
        config:
          principal.builder.class: cz.scholz.customprincipalbuilder.CustomPrincipalBuilder
        # ...  

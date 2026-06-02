@@ -34,7 +34,7 @@
         <maven.source.version>3.3.0</maven.source.version>
         <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
 
-        <kafka.version>3.6.0</kafka.version>
+        <kafka.version>4.2.0</kafka.version>
 	</properties>
 
     <dependencies>
